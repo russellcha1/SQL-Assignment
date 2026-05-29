@@ -16,3 +16,10 @@ FROM Invoice;
 --Q4
 SELECT AVG(Total), MIN(Total), MAX(Total)
 FROM Invoice
+
+
+--Part 2
+--Q5
+
+
+
