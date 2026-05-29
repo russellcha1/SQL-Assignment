@@ -18,8 +18,54 @@ SELECT AVG(Total), MIN(Total), MAX(Total)
 FROM Invoice
 
 
---Part 2
+--PART 2
 --Q5
 
+SELECT Country, Count(*)
+FROM Customer
+Group By Country;
+
+--Q6
+SELECT BillingCountry, SUM(total)
+FROM invoice
+GROUP BY BillingCountry
+ORDER BY SUM(total) DESC;
+
+--Q7
+
+SELECT BillingCountry, SUM(total), COUNT(*)
+FROM invoice
+GROUP BY BillingCountry
+HAVING COUNT(*) > 5
+ORDER BY SUM(total) DESC;
+
+--Q8
+SELECT BillingCountry, AVG(total)
+FROM invoice
+GROUP BY BillingCountry
+ORDER BY AVG(total) DESC;
+
+-- Part 3
+--Q9
+SELECT COUNT(*),
+CASE
+    WHEN Total < 5.00 THEN 'Small'
+    WHEN Total BETWEEN 5.00 AND 10 THEN 'Medium'
+    ELSE 'Large'
+    END AS InvoiceClass
+
+FROM invoice
+GROUP BY InvoiceClass;
+
+--Q10
+
+SELECT BillingCountry,
+CASE
+    WHEN Count(*) < 2 THEN 'LOW'
+    WHEN Count(*) BETWEEN 3 and 5 THEN 'Medium'
+    ELSE 'High'
+    END AS PurchaseAmount
+FROM invoice
+GROUP BY BillingCountry
 
 
