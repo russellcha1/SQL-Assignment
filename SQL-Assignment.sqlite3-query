@@ -66,6 +66,40 @@ CASE
     ELSE 'High'
     END AS PurchaseAmount
 FROM invoice
-GROUP BY BillingCountry
+GROUP BY BillingCountry;
 
+--Part4
+--Q11
+SELECT CustomerId, COUNT(*)
+FROM Invoice
+GROUP BY CustomerId;
 
+--Q12
+SELECT CustomerId,
+CASE WHEN SUM(Total) < 20 THEN 'Low Value'
+WHEN SUM(Total) BETWEEN 20 AND 40 THEN 'Medium Value'
+ELSE 'High Value'
+END AS 'Customer Value'
+FROM invoice
+GROUP BY CustomerId;
+
+--Q13
+SELECT COUNT(*),
+CASE
+    WHEN Total < 2.00 THEN 'Mild'
+    WHEN Total BETWEEN 2.00 AND 5 THEN 'Medium'
+    WHEN Total BETWEEN 5.00 AND 10 THEN 'Hot'
+    ELSE 'Diablo'
+    END AS InvoiceClass
+
+FROM invoice
+GROUP BY InvoiceClass;
+
+--Q14
+SELECT CustomerId, 
+COUNT(*) AS 'Number of Purchases', 
+SUM(Total) AS 'Total Money Spent', 
+ROUND(AVG(Total),2) AS 'Average Purchase Amount',
+MAX(Total) AS 'Largest Purchase'
+FROM invoice
+GROUP BY CustomerId
