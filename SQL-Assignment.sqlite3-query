@@ -1,0 +1,18 @@
+-- database: ../../scratch/chinook.db
+
+-- Part 1
+-- Q1
+SELECT COUNT(*)
+FROM Invoice;
+
+--Q2
+SELECT COUNT(DISTINCT CustomerId)
+FROM Customer;
+
+--Q3
+SELECT SUM(Total)
+FROM Invoice;
+
+--Q4
+SELECT AVG(Total), MIN(Total), MAX(Total)
+FROM Invoice
